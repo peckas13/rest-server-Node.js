@@ -15,7 +15,7 @@ app.get('/usuario', (req, res) => {
             }
             return res.status(200).json({
                 ok: true,
-                count: usuario.length,
+                count: usuarios.length,
                 usuarios
             });
 
