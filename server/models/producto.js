@@ -9,17 +9,16 @@ let productoSchema = new Schema({
     nombre: {
         type: String,
         unique: true,
-        required: [true, 'Porfavor ingresa el nombre del producto']
+        required: [true, 'Por favor ingresa el nombre del producto']
     },
     precioUni: {
         type: Number,
-        required: [true, 'Porfavor ingrese el precio unitario']
+        required: [true, 'Por favor ingresa el precio del producto']
     },
     categoria: {
         type: Schema.Types.ObjectId,
         ref: 'Categoria',
-        required: [true, 'Por favor ingrese la categoria']
-
+        required: [true, 'Por favor ingresa la categoria del producto']
     },
     disponible: {
         type: Boolean,
@@ -28,14 +27,17 @@ let productoSchema = new Schema({
     usuario: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
-        required: [true, 'Ingrese el usuario']
+        required: [true, 'Por favor ingresa el nombre del usuario']
+    },
+    img: {
+        type: String,
+        required: [true, 'Por favor ingresa la imagen']
     }
-
 });
 
 productoSchema.plugin(uniqueValidator, {
-    message: '{PATH} Debe ser unico y diferente'
+    message: '{PATH} Debe ser único y diferente'
 });
 
-
+//crea una coleccion
 module.exports = mongoose.model('Producto', productoSchema);

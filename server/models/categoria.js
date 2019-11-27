@@ -8,23 +8,22 @@ let categoriaSchema = new Schema({
     nombre: {
         type: String,
         unique: true,
-        required: [true, 'Ingrese el nombre de la categoria']
+        required: [true, 'Por favor ingresa el nombre de la categoria']
     },
     usuario: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
-        required: [true, 'Ingrese el usuario']
+        required: [true, 'Por favor ingresa el nombre del usuario']
     },
-    estado: {
-        type: String,
-        default: true,
-        required: [true, 'Ingrese el estado']
+    sta: {
+        type: Boolean,
+        default: true
     }
 });
 
 categoriaSchema.plugin(uniqueValidator, {
-    message: '{PATH} Debe ser unico y diferente'
+    message: '{PATH} Debe ser único y diferente'
 });
 
-
+//crea una coleccion
 module.exports = mongoose.model('Categoria', categoriaSchema);
