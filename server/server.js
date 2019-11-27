@@ -4,17 +4,14 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
 
-
-//Parse application/x-www-form.uriencoded
+//parse application/x-www-from-urlencoded
 app.use(bodyParser.urlencoded({ extend: false }));
 
-//Parse formato a application/json
+//parse formato a application/json
 app.use(bodyParser.json());
-
-//Archivo agrupador de rutas
+//archivo agrupador de indices
 app.use(require('./routes/index'));
-
-//Conexión a la base de datos
+//conector a la db
 mongoose.connect(process.env.URLDB, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -25,4 +22,5 @@ mongoose.connect(process.env.URLDB, {
 
         console.log('base de datos online');
     });
+//puerto que escucha 
 app.listen(process.env.PORT);
